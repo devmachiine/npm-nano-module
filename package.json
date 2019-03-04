@@ -1,6 +1,6 @@
 {
   "name": "nano-module",
-  "version": "2019.3.1",
+  "version": "2019.3.2",
   "description": "Dynamic package manager for javascript applications",
   "main": "index.js",
   "dependencies": {

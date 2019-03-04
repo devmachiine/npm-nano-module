@@ -1,6 +1,8 @@
-# npm-nano-module
+<p align="center">
+  <img src="play/nanja600.jpg"/>
+</p>
 
-Dynamic package manager for javascript applications
+## Dynamic package manager for javascript applications
 
 Sometimes you only need a small part of logic that a module provides. Nano modules are just that - modules that only do just about [one thing](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well). Like _really_ small modules, a single function _(aka method)_ to be exact.
 
