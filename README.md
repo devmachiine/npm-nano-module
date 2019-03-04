@@ -21,7 +21,7 @@ Your app could import just that spot of logic:
 
 ```javascript
 // require nano-module
-const ff = require('nano-module')() // <-- remember the extra thingamabob ()
+const ff = require('nano-module')
 
 // url (or local file path) to our dependency
 let path = 'https://example.com/url/math/addition-1992.js'
