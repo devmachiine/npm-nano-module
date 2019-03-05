@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="play/nanja600.jpg"/>
+  <img src="https://github.com/devmachiine/npm-nano-module/raw/master/play/nanja600.jpg"/>
 </p>
 
 ## Dynamic package manager for javascript applications
