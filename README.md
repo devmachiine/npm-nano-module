@@ -26,10 +26,15 @@ Your app could import just that spot of logic:
 const ff = require('nano-module')
 
 // url (or local file path) to our dependency
-let path = 'https://example.com/url/math/addition-1992.js'
+const path = 'https://example.com/url/math/addition-1992.js'
+
+// get the async add function
+const add = ff(path)
 
 // fetch the function and run it locally
-ff(path)(2,5).then((add_result) => console.log(`2 plus 5 equals ${add_result)}`))
+const result = await add(2, 5)
+
+console.log(`2 plus 5 equals ${result)}`))
 ```
 
 Outputs:
@@ -37,7 +42,67 @@ Outputs:
 
 ## A little more
 
-The remote function could be more interesting. Fetched functions can also use `nano-module`, aliased as `ff` _(fetch function)_ themselves to retrieve other functions, and those nested functions can do the same etc.. to build an entire dependency tree required to do complex tasks. Or, an entire program can built with nano-modules if you like.
+Nano modules can also be imported locally, so you don't have to upload them somewhere before using them:
+
+```javascript
+// import same as above..
+const rightpad = ff('./utils/string/not-leftpad.js')
+
+// more details on how nano modules can prevent the left-pad like disaster to follow ;)
+```
+
+Nano modules can also use `nano-module`, aliased as `ff` _(fetch function)_ themselves to retrieve other functions, and those nested functions can retrieve other functions and so forth, to accomplish more interesting tasks.
+
+Nano modules already find themselves in an `async` context, so in addition to `ff` you have `await` at your disposal:
+
+```javascript
+(test, assert) => {
+
+    const test_remote_call_remote = ff('https://gist.githubusercontent.com/devmachiine/44c86b61bd8b98226d7ddbe97b4196ea/raw/66107ef784c8a72bb99fdac2acd23bdd4a8280f9/remote-remote.js')
+
+    const test_add = await test_remote_call_remote(test, assert)
+
+    return test('remote load remote',
+        () => {
+            assert(test_add.description, 'remote functions can load other remote functions')
+            assert(true, !test_add.error)
+        })
+}
+```
+
+Here the funcion wasn't given just any old `x` and `y` as in the first example, but a test framework. These inputs don't go outside of your application over the wire, everything is ran locally.
+
+Nano modules live in the app directory:
+
+```
+project-name
+ - lib
+ - docs
+ - nano_modules
+   - domain
+   - domain
+    - subpath
+      - nano a.js  <-- in here. similar to the url on the web.
+      - nano b.js
+ - node_modules
+   - module a..
+   - module b..
+index.js
+
+```
+
+When a nano is requested, `nano-module` fetches it from the web (only once), then caches, and returns it.
+
+The next time your app runs, it'll load it from the `nano_modules` folder on the 1st call, and already in memory for subsequent calls.
+
+
+## Stable dependencies
+
+Anyone remember the [left\-pad incident](https://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/) ?
+
+There is a **big** ~~hash~~ hint in the last code snippet how the scenario can be prevented ;)
+
+_(with a minor drawback, for now.. work in progress..)_
 
 ## Background
 
