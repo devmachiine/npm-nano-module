@@ -127,7 +127,7 @@ _(with a minor drawback, for now.. work in progress..)_
 
 The [unix philosopy](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well), is a great example of how large software projects and be composed from small single purposed components.
  
-There are lots of packages that go along with the [browserify module philosophy](https://github.com/browserify/browserify-handbook#module-philosophy), and nano modules wants to push the idea a bit further.
+There are lots of packages that go along with the [browserify module philosophy](https://github.com/browserify/browserify-handbook#module-philosophy), and nano modules is also a way to encourage that approach.
 
 This [talk by Rich Hickey](https://www.youtube.com/watch?v=oyLBGkS5ICk) explains how dependencies often entail breaking changes. Among other things it talks about:
 
@@ -146,7 +146,7 @@ This project is a step in that direction.
 
 ## Next steps
 
- - Registry where people can add and search nano modules
+ - Registry where people can add and search nano modules [work in progress here](https://github.com/nanobook/archive)
  - Mechanism to singal interesting updates. Not updating for changes irrelevant to our code (ex. the author changed their mind about a name)
  - Tool to update dependencies in a tested, incremental way
  - Plugin/Extension for auto completion
