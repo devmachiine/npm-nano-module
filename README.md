@@ -147,7 +147,7 @@ This project is a step in that direction.
 ## Next steps
 
  - Registry where people can add and search nano modules
- - Mechanism to singal interesting updats. Not updating for changes irrelevant to our code (ex. the author changed their mind about a name)
+ - Mechanism to singal interesting updates. Not updating for changes irrelevant to our code (ex. the author changed their mind about a name)
  - Tool to update dependencies in a tested, incremental way
  - Plugin/Extension for auto completion
 
