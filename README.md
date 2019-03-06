@@ -2,11 +2,30 @@
   <img src="https://github.com/devmachiine/npm-nano-module/raw/master/play/nanja600.jpg"/>
 </p>
 
+## TLDR
+
+Same thing as `require(...)` with differences being:
+
+- No secondary steps needed to install the package.
+- Packages are single functions.
+
+## Quickstart
+
+```
+git clone https://github.com/devmachiine/npm-ffun.git
+cd npm-ffun
+node app-test.js
+```
+
+There is tests folder showing the proof of concept.
+
+This project is basically the same thing, with convenient defaults and picture of a ninja.
+
 ## Dynamic package manager for javascript applications
 
 Sometimes you only need a small part of logic that a module provides. Nano modules are just that - modules that only do just about [one thing](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well). Like _really_ small modules, a single function _(aka method)_ to be exact.
 
- You can think of each function as a 'mini-package', and `nano-module` as an additional vitamin supplement to familiar package managers like npm / yarn.
+You can think of each function as a 'mini-package', and `nano-module` as an additional vitamin supplement to familiar package managers like npm / yarn.
 
 ## Example:
 
@@ -106,21 +125,33 @@ _(with a minor drawback, for now.. work in progress..)_
 
 ## Background
 
-Dependencies often entail breaking changes. Often, especially for small pieces of code, developers prefer to copy or re-invent the wheel to avoid this [dependency problem](https://www.youtube.com/watch?v=oyLBGkS5ICk) all togehter.
+The [unix philosopy](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well), is a great example of how large software projects and be composed from small single purposed components.
+ 
+Ther are many packages that go along with the [browserify module philosophy](https://github.com/browserify/browserify-handbook#module-philosophy), and nano modules wants to push the idea a bit further.
 
-How many megabytes of dependencies does a project have ~ and do you really need to download *all* the code, even if you only run a subset ?
+This [talk by Rich Hickey](https://www.youtube.com/watch?v=oyLBGkS5ICk) explains how dependencies often entail breaking changes. Among other things it talks about:
 
-[Semantic versioning](https://semver.org/spec/v1.0.0-beta.html) makes dependency management a little easier with this convention:
+[Semantic versioning](https://semver.org/spec/v1.0.0-beta.html):
 <br/> \_.\_.x will probably not be a breaking change
 <br/> \_.x.\_ also won't be a breaking change, pinky promise ;)
 <br/> x.\_.\_ okay changes will possibly break your code, oops!
 
 However the version number only reflects the interactions with a module/package. Sometimes. The behaviour changes from version to version, and a 0.0.x bump could still be a breaking change anyway.
 
-What we want is to re-use shared code, without pushing breaking changes to unknown consumers, and signal updates that people can opt into. *(ex. security, bugfixes and performance improvements)* This project is a step in that direction.
+Another topic that animated me to start this project, was that I found it somehow crazy that a website cah have over 500 MB of dependencies. Do we really need to download *all* the code, even if you only run a subset ? Not that 5 or even 50GB of dependencies would be problem for our machines, the lazy loading aspect is purely out of curiosity and the inconvenience of waiting for progress bars and spinners.. ⏳
+
+What we want is to re-use shared code, without pushing breaking changes to unknown consumers, and signal updates that people can opt into. *(eg. security, bugfixes and performance improvements)*
+
+This project is a step in that direction.
 
 ## Next steps
 
+ - Registry to add and search functions
+ - Mechanism to singal interesting updats. Not updating for changes irrelevant to our code (ex the author changed their mind about a name)
+ - Tool to update dependencies in a tested incremental way
+ - Plugin/Extension for auto completion
+
+<!--
 Function-level dependency resolution, especially dynamically, provides it's own set of challenges and concerns to use over a traditional package manager (ex. npm, yarn).
 
 I suspect the dynamic resolution bit will have to be optional *(mainly for security & reliability reasons)*, and to rather/also create a build tool.
@@ -132,7 +163,6 @@ Thoughts arount *that* project:
 - A mechanism to enable the mesh to additionaly share optimized javascript, python, and eventually compiled language components.
 - Who knows, maybe pure functions could be [memoized](https://en.wikipedia.org/wiki/Memoization) globally..
 
-<!--
 ## Detail
 
 More: Build tool (bonsai?)
