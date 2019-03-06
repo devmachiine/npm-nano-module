@@ -6,7 +6,7 @@
 
 Same thing as `require(...)` with differences being:
 
-- No secondary steps needed to install the package.
+- No secondary steps needed to install a package.
 - Packages are single functions.
 
 ## Quickstart
@@ -23,9 +23,9 @@ This project is basically the same thing, with convenient defaults and picture o
 
 ## Dynamic package manager for javascript applications
 
-Sometimes you only need a small part of logic that a module provides. Nano modules are just that - modules that only do just about [one thing](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well). Like _really_ small modules, a single function _(aka method)_ to be exact.
+Sometimes you only need a small part of logic that a module provides. Nano modules are just that - modules that only do just about [one thing](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well). Like _really_ small modules, a single function to be exact.
 
-You can think of each function as a 'mini-package', and `nano-module` as an additional vitamin supplement to familiar package managers like npm / yarn.
+You can think of each function as a 'mini-package', and `nano-module` as an additional vitamin supplement to familiar package managers like npm or yarn.
 
 ## Example:
 
@@ -101,7 +101,7 @@ project-name
    - domain
    - domain
     - subpath
-      - nano a.js  <-- in here. similar to the url on the web.
+      - nano a.js  <-- in here. similar path as the url on the web.
       - nano b.js
  - node_modules
    - module a..
@@ -112,7 +112,7 @@ index.js
 
 When a nano is requested, `nano-module` fetches it from the web (only once), then caches, and returns it.
 
-The next time your app runs, it'll load it from the `nano_modules` folder on the 1st call, and already in memory for subsequent calls.
+The next time your app runs, it'll load it from the `nano_modules` folder on the 1st call, and from memory for subsequent calls.
 
 
 ## Stable dependencies
@@ -127,7 +127,7 @@ _(with a minor drawback, for now.. work in progress..)_
 
 The [unix philosopy](https://en.wikipedia.org/wiki/Unix_philosophy#Do_One_Thing_and_Do_It_Well), is a great example of how large software projects and be composed from small single purposed components.
  
-Ther are many packages that go along with the [browserify module philosophy](https://github.com/browserify/browserify-handbook#module-philosophy), and nano modules wants to push the idea a bit further.
+There are lots of packages that go along with the [browserify module philosophy](https://github.com/browserify/browserify-handbook#module-philosophy), and nano modules wants to push the idea a bit further.
 
 This [talk by Rich Hickey](https://www.youtube.com/watch?v=oyLBGkS5ICk) explains how dependencies often entail breaking changes. Among other things it talks about:
 
@@ -138,17 +138,17 @@ This [talk by Rich Hickey](https://www.youtube.com/watch?v=oyLBGkS5ICk) explains
 
 However the version number only reflects the interactions with a module/package. Sometimes. The behaviour changes from version to version, and a 0.0.x bump could still be a breaking change anyway.
 
-Another topic that animated me to start this project, was that I found it somehow crazy that a website cah have over 500 MB of dependencies. Do we really need to download *all* the code, even if you only run a subset ? Not that 5 or even 50GB of dependencies would be problem for our machines, the lazy loading aspect is purely out of curiosity and the inconvenience of waiting for progress bars and spinners.. ⏳
+Another topic that animated me to start this project, was that I found it somehow crazy that a website can have over 500 MB of dependencies. Do we really need to download *all* the code, even if you only run a subset ? Not that 5 or even 50GB of dependencies would be problem for our machines, the lazy loading aspect is purely out of curiosity and the inconvenience of waiting for progress bars and spinners.. ⏳
 
-What we want is to re-use shared code, without pushing breaking changes to unknown consumers, and signal updates that people can opt into. *(eg. security, bugfixes and performance improvements)*
+What we want is to re-use shared code, without pushing breaking changes to unknown consumers, and signal updates that people can opt into. *(eg. bugfixes, security and performance improvements)*
 
 This project is a step in that direction.
 
 ## Next steps
 
- - Registry to add and search functions
- - Mechanism to singal interesting updats. Not updating for changes irrelevant to our code (ex the author changed their mind about a name)
- - Tool to update dependencies in a tested incremental way
+ - Registry where people can add and search nano modules
+ - Mechanism to singal interesting updats. Not updating for changes irrelevant to our code (ex. the author changed their mind about a name)
+ - Tool to update dependencies in a tested, incremental way
  - Plugin/Extension for auto completion
 
 <!--
