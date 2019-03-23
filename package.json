@@ -1,12 +1,14 @@
 {
   "name": "nano-module",
-  "version": "2019.3.2",
+  "version": "2019.3.23",
   "description": "Dynamic package manager for javascript applications",
   "main": "index.js",
   "dependencies": {
-    "ffun": "^2019.3.2"
+    "ffun": "^2019.3.22"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "t3st": "^2019.3.20"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
