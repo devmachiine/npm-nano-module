@@ -6,8 +6,8 @@
 
 Same thing as `require(...)` with differences being:
 
-- No secondary steps needed to install a package.
-- Packages are single functions.
+- No secondary steps needed to install a package. Just use it in code.
+- Packages are single functions that return 1 thing.
 
 ## Quickstart
 
